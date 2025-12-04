@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>CFT San Agustín - Plataforma de Eventos</title>
-</head>
-<body>
-    <h1>Proyecto CFT San Agustín - Plataforma de Eventos</h1>
-    <p>Home funcionando correctamente.</p>
-</body>
-</html>
+{% extends 'eventos/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h2>Bienvenido a la Plataforma de Eventos</h2>
+    <p>Visualiza charlas, seminarios y actividades del CFT San Agustín.</p>
+    <a href="{% url 'eventos_lista' %}" class="btn btn-primary">Ver Eventos</a>
+</div>
+{% endblock %}
