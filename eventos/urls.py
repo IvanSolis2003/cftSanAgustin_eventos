@@ -1,6 +1,12 @@
 from django.urls import path
-from . import views
+from .views.home_views import home
+from .views.evento_views import eventos_lista, evento_detalle
+from .views.inscripcion_views import inscribir_evento, cancelar_inscripcion
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', home, name='home'),
+    path('eventos/', eventos_lista, name='eventos_lista'),
+    path('evento/<int:evento_id>/', evento_detalle, name='evento_detalle'),
+    path('inscribir/<int:evento_id>/', inscribir_evento, name='inscribir_evento'),
+    path('cancelar/<int:evento_id>/', cancelar_inscripcion, name='cancelar_inscripcion'),
 ]
