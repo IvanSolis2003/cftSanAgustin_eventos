@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}CFT San Agustín - Eventos{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --color-header: #2191FB;
+            --color-input-bg: #B2ECE1;
+            --color-input-text: #fff;
+            --color-paragraph: #000;
+            --color-label: #bebebe;
+        }
+        body { background-color: #f8f9fa; }
+        header { background-color: var(--color-header); color: white; padding: 1rem; }
+        label { color: var(--color-label); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CFT San Agustín - Plataforma de Eventos</h1>
+    </header>
+    <main class="container mt-4">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
