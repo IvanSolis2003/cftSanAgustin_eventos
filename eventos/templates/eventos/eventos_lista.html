@@ -1,0 +1,17 @@
+{% extends 'eventos/base.html' %}
+
+{% block title %}Lista de Eventos{% endblock %}
+
+{% block content %}
+<h2>Eventos Disponibles</h2>
+<ul class="list-group">
+    {% for evento in eventos %}
+        <li class="list-group-item">
+            <strong>{{ evento.titulo }}</strong> - {{ evento.fecha }} {{ evento.hora_inicio }} a {{ evento.hora_fin }}
+            <a href="{% url 'evento_detalle' evento.id %}" class="btn btn-sm btn-info float-end">Ver Detalle</a>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No hay eventos disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
