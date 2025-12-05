@@ -1,0 +1,78 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+venv.bak/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+# Normalmente conviene versionar las migraciones; solo ignorar caches dentro de ellas
+**/migrations/__pycache__/
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+.secrets/
+secrets.json
+
+# PostgreSQL client files
+.pgpass
+.pg_service.conf
+.psql_history
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+
+# Logs and temp
+*.log
+*.tmp
+tmp/
+temp/
+
+# Python tooling
+pip-log.txt
+pip-delete-this-directory.txt
+.python-version
+
+# Node (if used)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker
+docker-compose.override.yml
+.env.docker
+
+# Misc
+*.bak
+*.swp
