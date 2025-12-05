@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cftSanAgustin_eventos_db',
         'USER': 'postgres',
-        'PASSWORD': 'Swe472085',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
     }

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Evento, Alumno, Inscripcion
+from eventos.models import Evento, Alumno, Inscripcion
 
 def eventos_lista(request):
     eventos = Evento.objects.order_by('fecha', 'hora_inicio')
