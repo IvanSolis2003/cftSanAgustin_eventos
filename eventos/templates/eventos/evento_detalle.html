@@ -1,0 +1,42 @@
+{% extends 'eventos/base.html' %}
+{% block title %}Detalle del Evento{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header" style="background-color: var(--color-header); color: white;">
+      <h3>{{ evento.titulo }}</h3>
+    </div>
+    <div class="card-body">
+      <p>{{ evento.descripcion }}</p>
+      <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+      <p><strong>Horario:</strong> {{ evento.hora_inicio }} - {{ evento.hora_fin }}</p>
+      <p><strong>Cupo máximo:</strong> {{ evento.cupo_maximo }}</p>
+      <p><strong>Inscritos actuales:</strong> {{ evento.inscritos_count }}</p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      {% if user.is_staff %}
+        <!-- Botones CRUD solo para admin -->
+        <a href="{% url 'editar_evento' evento.id %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'eliminar_evento' evento.id %}" class="btn btn-danger">Eliminar</a>
+      {% elif user.is_authenticated %}
+        <!-- Botones inscripción solo para alumnos -->
+        {% if inscrito %}
+          <form method="post" action="{% url 'cancelar_inscripcion' evento.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger">Cancelar inscripción</button>
+          </form>
+        {% else %}
+          <form method="post" action="{% url 'inscribir_evento' evento.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Inscribirse</button>
+          </form>
+        {% endif %}
+      {% else %}
+        <!-- Invitación a login -->
+        <a href="{% url 'login' %}" class="btn btn-primary">Inicia sesión para inscribirte</a>
+      {% endif %}
+      <a href="{% url 'eventos_lista' %}" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
