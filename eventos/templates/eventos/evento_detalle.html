@@ -1,0 +1,66 @@
+{% extends 'eventos/base.html' %}
+
+{% block title %}
+Detalle Evento | {{ evento.titulo }}
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-body">
+
+        <h2 class="card-title mb-3">{{ evento.titulo }}</h2>
+
+        <p class="card-text">
+            {{ evento.descripcion }}
+        </p>
+
+        <hr>
+
+        <p>
+            <strong>📅 Fecha:</strong> {{ evento.fecha }}
+        </p>
+        <p>
+            <strong>⏰ Horario:</strong> {{ evento.hora_inicio }} - {{ evento.hora_fin }}
+        </p>
+        <p>
+            <strong>👥 Cupo máximo:</strong> {{ evento.cupo_maximo }}
+        </p>
+
+        <hr>
+
+        {% if user.is_authenticated %}
+
+            {% if inscrito %}
+                <div class="alert alert-success">
+                    ✅ Ya estás inscrito en este evento.
+                </div>
+
+                <a href="{% url 'cancelar_inscripcion' evento.id %}"
+                   class="btn btn-danger">
+                    Cancelar inscripción
+                </a>
+
+            {% else %}
+                <a href="{% url 'inscribir_evento' evento.id %}"
+                   class="btn btn-primary">
+                    Inscribirme
+                </a>
+            {% endif %}
+
+        {% else %}
+            <div class="alert alert-warning">
+                Debes <a href="{% url 'login' %}">iniciar sesión</a> para inscribirte en este evento.
+            </div>
+        {% endif %}
+
+        <hr>
+
+        <a href="{% url 'eventos_lista' %}" class="btn btn-secondary">
+            ⬅ Volver a eventos
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

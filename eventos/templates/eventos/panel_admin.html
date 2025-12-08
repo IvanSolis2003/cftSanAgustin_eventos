@@ -1,0 +1,19 @@
+{% extends 'eventos/base.html' %}
+
+{% block title %}Panel Administrador{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Panel del Administrador</h2>
+
+<p>Bienvenido <strong>{{ user.username }}</strong></p>
+
+<div class="list-group mt-4">
+    <a href="/admin/" class="list-group-item list-group-item-action">
+        ⚙️ Administrar sistema (Django Admin)
+    </a>
+
+    <a href="#" class="list-group-item list-group-item-action disabled">
+        📊 Dashboard (próximamente)
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'eventos/base.html' %}
+
+{% block title %}Panel Alumno{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Panel del Alumno</h2>
+
+<h4>📅 Mis eventos futuros</h4>
+
+{% if eventos_futuros %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Fecha</th>
+                <th>Horario</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ins in eventos_futuros %}
+                <tr>
+                    <td>{{ ins.evento.titulo }}</td>
+                    <td>{{ ins.evento.fecha }}</td>
+                    <td>{{ ins.evento.hora_inicio }} - {{ ins.evento.hora_fin }}</td>
+                    <td>
+                        <a href="{% url 'cancelar_inscripcion' ins.evento.id %}"
+                           class="btn btn-sm btn-danger">
+                            Cancelar
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No tienes eventos futuros inscritos.</p>
+{% endif %}
+
+<hr>
+
+<h4>📜 Historial de eventos</h4>
+
+{% if eventos_pasados %}
+    <ul class="list-group">
+        {% for ins in eventos_pasados %}
+            <li class="list-group-item">
+                {{ ins.evento.titulo }} — {{ ins.evento.fecha }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tienes eventos pasados.</p>
+{% endif %}
+
+{% endblock %}

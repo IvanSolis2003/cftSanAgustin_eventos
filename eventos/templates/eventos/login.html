@@ -1,0 +1,25 @@
+{% extends 'eventos/base.html' %}
+
+{% block title %}Login | CFT San Agustín{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+
+        <h2 class="mb-4 text-center">Iniciar Sesión</h2>
+
+        <form method="post" class="card card-body shadow">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-primary">
+                    Ingresar
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
