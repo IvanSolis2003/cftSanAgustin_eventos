@@ -1,25 +1,51 @@
 {% extends 'eventos/base.html' %}
 
-{% block title %}Login | CFT San Agustín{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
+
 <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-5">
 
         <h2 class="mb-4 text-center">Iniciar Sesión</h2>
 
-        <form method="post" class="card card-body shadow">
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                Usuario o contraseña incorrectos.
+            </div>
+        {% endif %}
+
+        <form method="post">
             {% csrf_token %}
 
-            {{ form.as_p }}
-
-            <div class="d-grid mt-3">
-                <button type="submit" class="btn btn-primary">
-                    Ingresar
-                </button>
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Usuario</label>
+                <input
+                    type="text"
+                    name="username"
+                    class="form-control"
+                    id="id_username"
+                    required
+                >
             </div>
+
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Contraseña</label>
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="id_password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Entrar
+            </button>
         </form>
 
     </div>
 </div>
+
 {% endblock %}

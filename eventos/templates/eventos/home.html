@@ -6,6 +6,15 @@
 <div class="text-center">
     <h2>Bienvenido a la Plataforma de Eventos</h2>
     <p>Visualiza charlas, seminarios y actividades del CFT San Agustín.</p>
-    <a href="{% url 'eventos_lista' %}" class="btn btn-primary">Ver Eventos</a>
+
+    {% if user.is_authenticated %}
+        <p style="color: var(--color-paragraph);">
+            Hola <strong>{{ user.username }}</strong>, ya estás conectado.
+        </p>
+        <a href="{% url 'eventos_lista' %}" class="btn btn-primary">Ver Eventos</a>
+        <a href="{% url 'logout' %}" class="btn btn-secondary ms-2">Cerrar sesión</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary">Iniciar sesión</a>
+    {% endif %}
 </div>
 {% endblock %}

@@ -21,7 +21,7 @@ local_settings.py
 db.sqlite3
 media/
 staticfiles/
-# Normalmente conviene versionar las migraciones; solo ignorar caches dentro de ellas
+# No ignorar migrations; solo caches dentro de ellas
 **/migrations/__pycache__/
 
 # Environment variables and secrets
@@ -30,6 +30,7 @@ staticfiles/
 *.env
 .secrets/
 secrets.json
+.env.local
 
 # PostgreSQL client files
 .pgpass
@@ -54,7 +55,6 @@ htmlcov/
 .pytest_cache/
 
 # Logs and temp
-*.log
 *.tmp
 tmp/
 temp/
@@ -68,6 +68,11 @@ pip-delete-this-directory.txt
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json
+yarn.lock
+
+# Static build output
+/static/
 
 # Docker
 docker-compose.override.yml
@@ -76,3 +81,4 @@ docker-compose.override.yml
 # Misc
 *.bak
 *.swp
+coverage.xml
