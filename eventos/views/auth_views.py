@@ -11,7 +11,7 @@ def redirect_dashboard(request):
 
     # Administrador
     if user.is_staff or user.is_superuser:
-        return redirect('admin')
+        return redirect('admin_dashboard')
 
     # Alumno
     if Alumno.objects.filter(user=user).exists():

@@ -1,4 +1,5 @@
 {% extends 'eventos/base.html' %}
+{% load static %}
 
 {% block title %}Panel Administrador{% endblock %}
 
@@ -48,5 +49,17 @@
 <a href="/admin/" class="btn btn-secondary mt-3">
     Ir al Django Admin
 </a>
+
+<hr class="mt-5">
+
+<div class="text-center text-muted mt-4">
+    <img
+        src="{% static 'eventos/img/sanagustin.png' %}"
+        alt="CFT San Agustín"
+        style="max-width: 120px;"
+        class="mb-2"
+    >
+    <p class="mb-0">CFT San Agustín</p>
+</div>
 
 {% endblock %}

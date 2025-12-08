@@ -20,11 +20,6 @@
         </p>
 
         <p>
-            <strong>📍 Lugar:</strong>
-            {{ evento.lugar }}
-        </p>
-
-        <p>
             <strong>👥 Cupos disponibles:</strong>
             {{ cupos_disponibles }}
         </p>
@@ -38,7 +33,7 @@
 </div>
 
 {% if user.is_authenticated %}
-    {% if ya_inscrito %}
+    {% if inscrito %}
         <div class="alert alert-success">
             ✅ Ya estás inscrito en este evento.
         </div>

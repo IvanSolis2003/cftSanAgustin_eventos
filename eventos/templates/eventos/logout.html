@@ -1,8 +1,27 @@
-{% extends "eventos/base.html" %}
-{% block title %}Cerrar sesión{% endblock %}
+{% extends 'eventos/base.html' %}
+
+{% block title %}Sesión Cerrada{% endblock %}
+
 {% block content %}
-<div class="text-center mt-5">
-  <h3>Has cerrado sesión correctamente.</h3>
-  <a href="{% url 'login' %}" class="btn btn-secondary mt-3">Volver a iniciar sesión</a>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+
+        <h2 class="mb-4">Sesión cerrada</h2>
+
+        <div class="alert alert-info">
+            Has cerrado sesión correctamente.
+        </div>
+
+        <a href="{% url 'login' %}" class="btn btn-primary">
+            Iniciar sesión nuevamente
+        </a>
+
+        <a href="{% url 'home' %}" class="btn btn-secondary ms-2">
+            Volver al inicio
+        </a>
+
+    </div>
 </div>
+
 {% endblock %}
