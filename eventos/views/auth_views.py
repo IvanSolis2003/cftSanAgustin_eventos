@@ -1,5 +1,7 @@
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
 from eventos.models import Alumno
 
 
@@ -9,7 +11,7 @@ def redirect_dashboard(request):
 
     # Administrador
     if user.is_staff or user.is_superuser:
-        return redirect('admin_dashboard')
+        return redirect('admin')
 
     # Alumno
     if Alumno.objects.filter(user=user).exists():
@@ -17,3 +19,8 @@ def redirect_dashboard(request):
 
     # Fallback
     return redirect('home')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

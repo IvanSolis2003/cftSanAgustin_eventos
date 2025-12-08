@@ -1,22 +1,19 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from eventos.views.auth_views import logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # App eventos
     path('', include('eventos.urls')),
 
-    # Login / Logout
     path(
         'login/',
-        auth_views.LoginView.as_view(template_name='eventos/login.html'),
+        auth_views.LoginView.as_view(
+            template_name='eventos/login.html'
+        ),
         name='login'
     ),
-    path(
-        'logout/',
-        auth_views.LogoutView.as_view(),
-        name='logout'
-    ),
+
+    path('logout/', logout_view, name='logout'),
 ]
