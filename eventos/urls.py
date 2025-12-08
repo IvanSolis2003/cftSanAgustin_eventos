@@ -2,8 +2,11 @@ from django.urls import path
 from .views.home_views import home
 from .views.evento_views import eventos_lista, evento_detalle
 from .views.inscripcion_views import inscribir_evento, cancelar_inscripcion
-
+from django.contrib.auth import views as auth_views
 urlpatterns = [
+    
+    path('login/', auth_views.LoginView.as_view(template_name='eventos/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('', home, name='home'),
     path('eventos/', eventos_lista, name='eventos_lista'),
     path('evento/<int:evento_id>/', evento_detalle, name='evento_detalle'),
