@@ -5,6 +5,8 @@ from .views.evento_views import eventos_lista, evento_detalle
 from .views.inscripcion_views import inscribir_evento, cancelar_inscripcion
 from .views.auth_views import redirect_dashboard
 from .views.alumno_views import panel_alumno
+from .views.admin_views import panel_admin
+
 
 urlpatterns = [
     path('', home, name='home'),
@@ -20,4 +22,7 @@ urlpatterns = [
 
     # Panel alumno
     path('panel/alumno/', panel_alumno, name='alumno_dashboard'),
+
+    # Panel administrador
+    path('panel/admin/', panel_admin, name='admin_dashboard'),
 ]

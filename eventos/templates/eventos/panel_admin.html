@@ -3,17 +3,50 @@
 {% block title %}Panel Administrador{% endblock %}
 
 {% block content %}
+
 <h2 class="mb-4">Panel del Administrador</h2>
 
-<p>Bienvenido <strong>{{ user.username }}</strong></p>
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Alumnos</h5>
+                <h3>{{ total_alumnos }}</h3>
+            </div>
+        </div>
+    </div>
 
-<div class="list-group mt-4">
-    <a href="/admin/" class="list-group-item list-group-item-action">
-        ⚙️ Administrar sistema (Django Admin)
-    </a>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Eventos</h5>
+                <h3>{{ total_eventos }}</h3>
+            </div>
+        </div>
+    </div>
 
-    <a href="#" class="list-group-item list-group-item-action disabled">
-        📊 Dashboard (próximamente)
-    </a>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>Inscripciones</h5>
+                <h3>{{ total_inscripciones }}</h3>
+            </div>
+        </div>
+    </div>
 </div>
+
+{% if evento_popular %}
+    <div class="alert alert-info">
+        📊 Evento más popular:
+        <strong>{{ evento_popular.evento__titulo }}</strong>
+        ({{ evento_popular.total }} inscripciones)
+    </div>
+{% else %}
+    <p>No hay inscripciones aún.</p>
+{% endif %}
+
+<a href="/admin/" class="btn btn-secondary mt-3">
+    Ir al Django Admin
+</a>
+
 {% endblock %}
